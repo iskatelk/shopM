@@ -21,7 +21,7 @@
     <meta name="description" content="Товарный агрегатор Megano">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <link href="favicon.ico" rel="shortcut icon">
+    <link f="favicon.ico" rel="shortcut icon">
     <link rel="preload" href="assets/fonts/Roboto/Roboto-Regular.woff" as="font">
     <link rel="preload" href="assets/fonts/Roboto/Roboto-Italic.woff" as="font">
     <link rel="preload" href="assets/fonts/Roboto/Roboto-Bold.woff" as="font">
@@ -72,7 +72,8 @@ p.error-browser
                 </div>
                 <nav class="row-block">
                     <div class="row ControlPanel-rowSplit">
-                        <div class="row-block"><a class="ControlPanel-title" href="{{ path('app_login') }}">Войти</a>/&nbsp;<a class="ControlPanel-title" href="{{ path('app_register') }}">Регистрация</a>&nbsp;/&nbsp;<a class="ControlPanel-title" href="{{ path('app_logout') }}">Выйти</a>
+                        <div class="row-block">
+                            <a class="ControlPanel-title" href="{% if app.session.get('customer') is null %}{{ path('app_login') }}{% else %}{{ path('app_account') }}{% endif %}">{% if app.session.get('customer') is null %}{{ 'Войти' }}{% else %}{{ 'Личный кабинет' }}{% endif %}</a>/&nbsp;<a class="ControlPanel-title" href="{% if app.session.get('customer') is null %}{{ path('app_register') }}{% else %}{{ path('app_logout') }}{% endif %}">{% if app.session.get('customer') is null %}{{ 'Регистрация' }}{% else %}{{ 'Выйти' }}{% endif %}</a>
                         </div>
                     </div>
                 </nav>

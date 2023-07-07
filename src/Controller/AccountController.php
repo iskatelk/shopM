@@ -20,7 +20,14 @@ class AccountController extends AbstractController
 		$customer = $request->getSession()->get(
             Security::LAST_USERNAME
         );
-		$repository = $em->getRepository(Order::class);
+//        $request->getSession()->set('checkLogin',true); // 2023/07/07
+        $request->getSession()->set('customer',$customer); // 2023/07/07
+        $repository = $em->getRepository(User::class); // 2023/07/07
+        $userDetails = $repository->findOneBy(array
+            ('email' => $customer)
+        );
+
+        $repository = $em->getRepository(Order::class);
         $orderDetails = $repository->findOneBy(array
 		      ('email' => $customer),array('orderNumber' => 'DESC')
          );
@@ -28,6 +35,7 @@ class AccountController extends AbstractController
         return $this->render('account/account.html.twig', [
            // 'controller_name' => 'AccountController',
 		   'orderDetails' => $orderDetails,
+           'userDetails' => $userDetails,
         ]);
     }
 }

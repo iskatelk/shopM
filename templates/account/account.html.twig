@@ -40,13 +40,14 @@
                 </div>
               </div>
               <div class="Account-column">
-                <div class="Account-name">{{ orderDetails.customerName }}
+                <div class="Account-name">{{ userDetails.customer }}
                 </div><a class="Account-editLink" href="{{ path('app_profile') }}">Редактировать профиль</a>
               </div>
             </div>
             <div class="Account-group">
               <div class="Account-column Account-column_full">
                 <div class="Order Order_anons">
+                  {% if orderDetails is not null %}
                   <div class="Order-personal">
                     <div class="row">
                       <div class="row-block"><a class="Order-title" href="{{ path('app_oneorder') }}?order={{ orderDetails.orderNumber }}">Заказ&#32;<span class="Order-numberOrder">№{{ orderDetails.orderNumber }}</span>&#32;от&#32;<span class="Order-dateOrder">{{ orderDetails.createdAt|date('Y-m-d') }}</span></a>
@@ -81,6 +82,8 @@
                       </div>
                     </div>
                   </div>
+                  {% else %} {{ 'Заказов пока еще нет' }}
+                  {% endif %}
                 </div>
               </div>
             </div>
