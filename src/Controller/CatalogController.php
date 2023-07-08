@@ -31,6 +31,10 @@ class CatalogController extends AbstractController {
             $model = $request->query->get('model');
             $comments = $catalog->comments2($repository,intval($price2[0]),intval($price2[1]),$seller,$title,$model);
         }
+        $query = $request->query->get('qr');
+        if($query) {
+            $comments = $repository->searchByQuery($query);
+        }
         $q = $request->query->get('q');
 
         if ($q == 1) {

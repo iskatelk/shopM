@@ -36,6 +36,21 @@ class PaymentsomeoneController extends AbstractController
         $ord = $repository2->getMaxId();
         $this->orderNumber = intval($ord[0][1]) + 1;
 
+        if(isset($customer)) {
+
+            $queryBuilder = $em->createQueryBuilder();
+            $query = $queryBuilder->update('App:User', 'u')
+                ->set('u.customer', ':userName')
+                ->set('u.city', ':city')
+                ->set('u.address', ':address')
+                ->where('u.email = :email')
+                ->setParameter('userName', $_POST['name'])
+                ->setParameter('city', $_POST['city'])
+                ->setParameter('address', $_POST['address'])
+                ->setParameter('email', $_POST['mail'])
+                ->getQuery();
+            $result = $query->execute();
+        }
       //  dd($this->orderNumber);
         if(!isset($customer) && isset($_POST['name'])) {
 
