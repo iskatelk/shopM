@@ -7,7 +7,7 @@
         <div class="Middle-header">
           <h1 class="Middle-title">Регистрация</h1>
           <ul class="breadcrumbs Middle-breadcrumbs">
-            <li class="breadcrumbs-item"><a href="index.html">Главная</a></li>
+            <li class="breadcrumbs-item"><a href="{{ path('app_index') }}">Главная</a></li>
             <li class="breadcrumbs-item breadcrumbs-item_current"><span>Регистрация</span></li>
           </ul>
         </div>
@@ -15,7 +15,7 @@
     </div>
     <div class="Section">
       <div class="wrap">
-        <form class="form Authorization" action="#" method="post">
+        <form class="form Authorization" action="{{  path('app_account') }}" method="post">
           <div class="row">
             <div class="row-block">
               <div class="form-group">
