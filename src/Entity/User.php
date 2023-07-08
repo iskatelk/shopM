@@ -34,10 +34,6 @@ class User implements UserInterface
      */
     private $password;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $telefon;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -138,18 +134,6 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
-    }
-
-    public function getTelefon(): ?int
-    {
-        return $this->telefon;
-    }
-
-    public function setTelefon(?int $telefon): self
-    {
-        $this->telefon = $telefon;
-
-        return $this;
     }
 
     public function getCustomer(): ?string
