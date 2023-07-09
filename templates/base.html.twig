@@ -96,7 +96,7 @@ p.error-browser
                 </div>
             </nav>
             <div class="row-block">
-                <div class="CartBlock"><a class="CartBlock-block" href="{{ path('app_compare') }}"><img class="CartBlock-img" src="assets/img/icons/exchange.svg" alt="exchange.svg"/><span class="CartBlock-amount">4</span></a><a class="CartBlock-block" href="{{ path('app_cart') }}?p={% if app.session.get('goods') is not null %}{{ app.session.get('goods')[0] }}{% endif %}"><img class="CartBlock-img" src="assets/img/icons/cart.svg" alt="cart.svg"/><span class="CartBlock-amount">{% if app.session.get('counts') is not null %}{{ app.session.get('totalcnt') }}{% else %}{{ 0 }}{% endif %}</span></a>
+                <div class="CartBlock"><a class="CartBlock-block" href="{{ path('app_compare') }}"><img class="CartBlock-img" src="assets/img/icons/exchange.svg" alt="exchange.svg"/><span class="CartBlock-amount">4</span></a><a class="CartBlock-block" href="{{ path('app_cart') }}"><img class="CartBlock-img" src="assets/img/icons/cart.svg" alt="cart.svg"/><span class="CartBlock-amount">{% if app.session.get('counts') is not null %}{{ app.session.get('totalcnt') }}{% else %}{{ 0 }}{% endif %}</span></a>
                     <div class="CartBlock-block"><span class="CartBlock-price">{% if app.session.get('counts') is null %}{{ 0.00 }}{% else %}{{ app.session.get('total') }}{%  endif %}$</span>
                     </div>
                 </div>
@@ -191,9 +191,7 @@ p.error-browser
             <div class="Header-search">
                 <div class="search">
                     <form class="form form_search" action="{{ path('app_catalog') }}" method="get">
-
                         <input class="search-input" id="qr" name="qr" type="text" placeholder="Найти..."/>
-
                         <button class="search-button" type="submit" name="search" id="search"><img src="assets/img/icons/search.svg" alt="search.svg"/>Поиск</button>
                     </form>
                 </div>

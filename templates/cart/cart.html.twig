@@ -7,7 +7,7 @@
             <div class="Middle-header">
                 <h1 class="Middle-title">Корзина</h1>
                 <ul class="breadcrumbs Middle-breadcrumbs">
-                    <li class="breadcrumbs-item"><a href="index.html">Главная</a></li>
+                    <li class="breadcrumbs-item"><a href="{{ path('app_index') }}">Главная</a></li>
                     <li class="breadcrumbs-item breadcrumbs-item_current"><span>Корзина</span></li>
                 </ul>
             </div>
@@ -15,7 +15,7 @@
     </div>
     <div class="Section">
         <div class="wrap">
-            <form class="form Cart" action="{{ path('app_cart') }}" method="post">
+            <form class="form Cart" action="{{ path('app_cart_update') }}" method="post">
                 {% set i = 0 %}
                 {% for gid in gids %}
                     {% if counts is not null %}
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                         <div class="Cart-block Cart-block_delete">
-                            <a class="Cart-delete" href="{{  path('app_cart')}}?d={{gid.0.productId}}"><img src="assets/img/icons/card/delete.svg" alt="delete.svg"/></a>
+                            <a class="Cart-delete" href="{{ path('app_cart_delete') }}?d={{gid.0.productId}}"><img src="assets/img/icons/card/delete.svg" alt="delete.svg"/></a>
                         </div>
 
                     </div>
@@ -70,11 +70,7 @@
                      {{ gid.0.price * counts[i] }}
                     {% endif %}
                     {% endif %}
-
-
-
                     {% set i = i + 1 %}
-
 
                 {% endfor %}
 
@@ -84,13 +80,13 @@
                         </strong><span class="Cart-price">{{ total }}$</span><span class="Cart-price_old">250.99$</span>
                     </div>
                     <div class="Cart-block">
-                        <input  type="submit" class="btn btn_success btn_lg" name="clear" value="Очистить">
+                        <input  type="submit" class="btn btn_success btn_lg" id="clear" name="clear" value="Очистить">
                     </div>
                     <div class="Cart-block">
-                    <input  type="submit" class="btn btn_success btn_lg" name="recalculate" value="Пересчитать">
+                    <input  type="submit" class="btn btn_success btn_lg" id="update" name="update" value="Пересчитать">
                 </div>
                     <div class="Cart-block">
-                        <a class="btn btn_success btn_lg" href="http://127.0.0.1:8000/catalog">Продолжить покупки</a>
+                        <a class="btn btn_success btn_lg" href="{{ path('app_catalog') }}">Продолжить покупки</a>
                     </div>
                     <div class="Cart-block"><a class="btn btn_success btn_lg" href="{{ path('app_order') }}">Оформить заказ</a>
                     </div>
