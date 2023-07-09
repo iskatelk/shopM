@@ -11,10 +11,21 @@ class CompareController extends AbstractController
     /**
      * @Route("/compare", name="app_compare")
      */
-    public function compare() : Response
+    public function add() : Response
     {
         return $this->render('compare\compare.html.twig', [
             'controller_name', 'CompareController',
         ]);
     }
+
+    /**
+     * @Route("/compare/remove", name="app_compare_remove")
+     */
+    public function remove() : Response
+    {
+        return $this->render('compare\compare.html.twig', [
+            'controller_name', 'CompareController',
+        ]);
+    }
+
 }
