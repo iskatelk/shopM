@@ -21,7 +21,7 @@
     <meta name="description" content="Товарный агрегатор Megano">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <link f="favicon.ico" rel="shortcut icon">
+    <link href="favicon.ico" rel="shortcut icon">
     <link rel="preload" href="assets/fonts/Roboto/Roboto-Regular.woff" as="font">
     <link rel="preload" href="assets/fonts/Roboto/Roboto-Italic.woff" as="font">
     <link rel="preload" href="assets/fonts/Roboto/Roboto-Bold.woff" as="font">
@@ -190,8 +190,10 @@ p.error-browser
             </div>
             <div class="Header-search">
                 <div class="search">
-                    <form class="form form_search" action="#" method="post">
-                        <input class="search-input" id="query" name="query" type="text" placeholder="Найти..."/>
+                    <form class="form form_search" action="{{ path('app_catalog') }}" method="get">
+
+                        <input class="search-input" id="qr" name="qr" type="text" placeholder="Найти..."/>
+
                         <button class="search-button" type="submit" name="search" id="search"><img src="assets/img/icons/search.svg" alt="search.svg"/>Поиск</button>
                     </form>
                 </div>
