@@ -38,6 +38,7 @@ class CartController extends AbstractController
     {
         $this->goods = $this->session->get('goods');
         $this->counts = $this->session->get('counts');
+
         if (isset($this->goods)) {
             foreach ($this->goods as $key => $prd_id) {
                 if ($prd_id > 0) {
@@ -115,20 +116,6 @@ class CartController extends AbstractController
             $this->session->set('goods', $this->goods);
             $this->session->set('counts', $this->counts);
 
-                foreach ($this->goods as $key => $prd_id) {
-                    //  dd($prd_id);
-                    if ($prd_id > 0) {
-                        $this->gids[] = $repository->findSelectProduct(intval($prd_id));
-
-                        $prc = $repository->getPriceItem($prd_id);
-                        if (isset($this->counts)) {
-                            $this->total += $prc[0]['price'] * $this->counts[$key];
-                            $this->totalcnt += $this->counts[$key];
-                            $this->session->set('total', $this->total);
-                            $this->session->set('totalcnt', $this->totalcnt);
-                        }
-                    }
-                }
         }
         return $this->redirectToRoute('app_cart');
     }
