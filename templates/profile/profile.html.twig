@@ -35,7 +35,7 @@
         </div>
         <div class="Section-content">
           <div class="Profile">
-            <form class="form Profile-form" action="#" method="post">
+            <form class="form Profile-form" action="{{ path('app_profile') }}" method="post">
               <div class="row">
                 <div class="row-block">
                   <div class="form-group">
@@ -52,7 +52,7 @@
                   <div class="form-group">
                     <label class="form-label" for="name">ФИО
                     </label>
-                    <input class="form-input" id="name" name="name" type="text" value="{{  userDetails.customer }}" data-validate="require"/>
+                    <input class="form-input" id="name" name="name" type="text" value="{{ userDetails.customer }}" data-validate="require"/>
                   </div>
                 </div>
                 <div class="row-block">
@@ -64,12 +64,12 @@
                   <div class="form-group">
                     <label class="form-label" for="mail">E-mail
                     </label>
-                    <input class="form-input" id="mail" name="mail" type="text" value="{{  userDetails.email  }}" data-validate="require"/>
+                    <input class="form-input" id="mail" name="mail" type="text" value="{{ userDetails.email }}" data-validate="require"/>
                   </div>
                   <div class="form-group">
                     <label class="form-label" for="password">Пароль
                     </label>
-                    <input class="form-input" id="password" name="password" type="password" value="{{  userDetails.password }}" placeholder="Тут можно изменить пароль"/>
+                    <input class="form-input" id="password" name="password" type="password" value="{{ userDetails.password }}" placeholder="Тут можно изменить пароль"/>
                   </div>
                   <div class="form-group">
                     <label class="form-label" for="passwordReply">Подтверждение пароля
@@ -80,7 +80,7 @@
                     <div class="Profile-btn">
                       <button class="btn btn_success" type="submit">Сохранить</button>
                     </div>
-                    <div class="Profile-success">Профиль успешно сохранен</div>
+                    <div class="Profile-success">{% if success is not null %}{{ 'Профиль успешно сохранен' }}{% endif %}</div>
                   </div>
                 </div>
               </div>

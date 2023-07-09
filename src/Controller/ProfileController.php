@@ -20,8 +20,9 @@ class ProfileController extends AbstractController
         $customer = $request->getSession()->get(
             Security::LAST_USERNAME
         );
-        $repository = $em->getRepository(User::class);
-        $userDetails = $repository->findOneBy(array('email'=>$customer));
+        if(!isset($success)) {
+            $success = null;
+        }
 
         if(isset($_POST['name'])) {
             $queryBuilder = $em->createQueryBuilder();
@@ -35,11 +36,16 @@ class ProfileController extends AbstractController
                 ->setParameter('password', $_POST['password'])
                 ->setParameter('email', $customer)
                 ->getQuery();
-            $result = $query->execute();
+            $success = $query->execute();
         }
+
+        $repository = $em->getRepository(User::class);
+        $userDetails = $repository->findOneBy(array('email'=>$customer));
+
         return $this->render('profile/profile.html.twig', [
            // 'controller_name' => 'ProfileController',
             'userDetails' => $userDetails,
+            'success' => $success,
         ]);
     }
 }
