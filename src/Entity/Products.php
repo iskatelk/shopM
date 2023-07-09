@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +43,16 @@ class Products
      * @ORM\Column(type="integer")
      */
     private $product_id;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=SellersProducts::class, mappedBy="Sellers")
+     */
+    private $sellersProducts;
+
+    public function __construct()
+    {
+        $this->sellersProducts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -103,6 +115,33 @@ class Products
     public function setProductId(int $product_id): self
     {
         $this->product_id = $product_id;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SellersProducts>
+     */
+    public function getSellersProducts(): Collection
+    {
+        return $this->sellersProducts;
+    }
+
+    public function addSellersProduct(SellersProducts $sellersProduct): self
+    {
+        if (!$this->sellersProducts->contains($sellersProduct)) {
+            $this->sellersProducts[] = $sellersProduct;
+            $sellersProduct->addSeller($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSellersProduct(SellersProducts $sellersProduct): self
+    {
+        if ($this->sellersProducts->removeElement($sellersProduct)) {
+            $sellersProduct->removeSeller($this);
+        }
 
         return $this;
     }
