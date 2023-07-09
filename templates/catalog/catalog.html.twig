@@ -7,7 +7,7 @@
             <div class="Middle-header">
                 <h1 class="Middle-title">Каталог</h1>
                 <ul class="breadcrumbs Middle-breadcrumbs">
-                    <li class="breadcrumbs-item"><a href="index.html">Главная</a></li>
+                    <li class="breadcrumbs-item"><a href="{{ path('app_index') }}">Главная</a></li>
                     <li class="breadcrumbs-item breadcrumbs-item_current"><span>Каталог</span></li>
                 </ul>
             </div>
@@ -77,20 +77,20 @@
                 </div>
                 <div class="Cards">
                     {% for comment in pagination %}
-                    <div class="Card"><a class="Card-picture" href="#"><img src="../../assets/img/content/home/card.jpg" alt="card.jpg"/></a>
+                    <div class="Card"><a class="Card-picture" href="{{ path('app_product_show') }}"><img src="../../assets/img/content/home/card.jpg" alt="card.jpg"/></a>
                         <div class="Card-content">
-                            <strong class="Card-title"><a href="product.html">{{ comment.title }}</a>
+                            <strong class="Card-title"><a href="{{ path('app_product_show') }}">{{ comment.title }}</a>
                             </strong>
                             <div class="Card-description">
                                 <div class="Card-cost"><span class="Card-priceOld">$115.00</span><span class="Card-price">${{ comment.price }}</span>
                                 </div>
                                 <div class="Card-category">Games / xbox
                                 </div>
-                                <div class="Card-hover"><a class="Card-btn" href="#">
+                                <div class="Card-hover"><a class="Card-btn" href="{{ path('app_product_show') }}">
                                         <img src="../../assets/img/icons/card/bookmark.svg" alt="bookmark.svg"/></a>
                                     <a class="Card-btn" href="{{ path('app_cart') }}?p={{ comment.productId }}">
                                         <img src="../../assets/img/icons/card/cart.svg" alt="cart.svg"/></a>
-                                    <a class="Card-btn" href="#">
+                                    <a class="Card-btn" href="{{ path('app_compare') }}">
                                         <img src="../../assets/img/icons/card/change.svg" alt="change.svg"/></a>
                                 </div>
                             </div>
