@@ -5,7 +5,7 @@
     <div class="Middle-top">
       <div class="wrap">
         <div class="Middle-header">
-          <h1 class="Middle-title">Продавец ООО "Ромашка"</h1>
+          <h1 class="Middle-title">Продавец ООО {{  seller.name  }}</h1>
           <ul class="breadcrumbs Middle-breadcrumbs">
             <li class="breadcrumbs-item"><a href="index.html">Главная</a></li>
             <li class="breadcrumbs-item breadcrumbs-item_current"><span>О продавце</span></li>
@@ -21,7 +21,7 @@
               <div class="media-image"><img src="assets/img/icons/contacts/phone.svg" alt="phone.svg"/>
               </div>
               <div class="media-content">Тел:&#32;
-                <nobr>+8 (200) 800-2000-600</nobr>
+                <nobr>+{{  seller.phone }}</nobr>
               </div>
             </div>
           </div>
@@ -30,7 +30,7 @@
               <div class="media-image"><img src="assets/img/icons/contacts/address.svg" alt="address.svg"/>
               </div>
               <div class="media-content">
-                У черта на куличиках 12
+               {{ seller.address }}
               </div>
             </div>
           </div>
@@ -48,23 +48,9 @@
               </div>
             </div>
             <div class="row-block">
-              <h2>ООО "Ромашка"</h2>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit doli. Aenean commodo ligula eget dolor. Aenean massa. Cumtipsu sociis natoque penatibus et magnis dis parturient montesti, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eutu, pretiumem.
-              </p>
-              <ul>
-                <li>Lorem ipsum dolor sit amet, consectetuer
-                </li>
-                <li>adipiscing elit doli. Aenean commodo ligula
-                </li>
-                <li>eget dolor. Aenean massa. Cumtipsu sociis
-                </li>
-                <li>natoque penatibus et magnis dis parturient
-                </li>
-                <li>montesti, nascetur ridiculus mus. Donec
-                </li>
-                <li>quam felis, ultricies nec, pellentesque eutu
-                </li>
-              </ul>
+              <h2>ООО {{  seller.name  }}</h2>
+
+              <div>{{  seller.description  }}</div>
             </div>
           </div>
           <header class="Section-header">

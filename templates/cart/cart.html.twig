@@ -24,12 +24,11 @@
                 <div class="Cart-product">
                     <div class="Cart-block Cart-block_row">
                         <div class="Cart-block Cart-block_pict">
-                            <a class="Cart-pict" href="#"><img class="Cart-img" src="assets/img/content/home/card.jpg" alt="card.jpg"/></a>
+                            <a class="Cart-pict" href="{{ path('app_product_show') }}?p={{ gid.0.productId }}"><img class="Cart-img" src="assets/img/content/home/card.jpg" alt="card.jpg"/></a>
                         </div>
-                        <div class="Cart-block Cart-block_info"><a class="Cart-title" href="#">{{ gid.0.title }}</a>
+                        <div class="Cart-block Cart-block_info"><a class="Cart-title" href="{{ path('app_product_show') }}?p={{ gid.0.productId }}">{{ gid.0.title }}</a>
                             <div class="Cart-desc">Это супер ноутбук, 3 гб. 4 ядра   {{ gid.0.productId }}
                             </div>
-
                         </div>
                         <div class="Cart-block Cart-block_price">
                             <div class="Cart-price">{{ gid.0.price }}$
