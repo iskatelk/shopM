@@ -34,6 +34,21 @@ class SellersProducts
      */
     private $Sellers;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $price;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sold;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $shop_name;
+
     public function __construct()
     {
         $this->Sellers = new ArrayCollection();
@@ -88,6 +103,42 @@ class SellersProducts
     public function removeSeller(Products $seller): self
     {
         $this->Sellers->removeElement($seller);
+
+        return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(float $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    public function getSold(): ?int
+    {
+        return $this->sold;
+    }
+
+    public function setSold(?int $sold): self
+    {
+        $this->sold = $sold;
+
+        return $this;
+    }
+
+    public function getShopName(): ?string
+    {
+        return $this->shop_name;
+    }
+
+    public function setShopName(string $shop_name): self
+    {
+        $this->shop_name = $shop_name;
 
         return $this;
     }
